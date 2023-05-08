@@ -1,6 +1,6 @@
 let chatButton = document.getElementById('chat-button');
 let chatBox = document.getElementById('chat-box');
-let close = document.querySelector('.chat-box .chat-box-header p'); 
+let close = document.querySelector('.chat-box .chat-box-header p');
 let addExtra = document.getElementById('addExtra')
 let modal = document.getElementById('modal')
 let modal_close = document.getElementById('modal-close-button')
@@ -8,6 +8,7 @@ let modal_close = document.getElementById('modal-close-button')
 chatButton.addEventListener('click', () => {
     chatButton.style.display = 'none';
     chatBox.style.visibility = 'visible';
+    notification.innerHTML = 0
 })
 
 close.addEventListener('click', () => {
@@ -33,6 +34,9 @@ let socket = io(ip_address + ':' + port);
 let Chatinput = document.getElementById('Chatinput')
 let user = document.getElementById('userName');
 let showUsername = document.getElementById('showUsername')
+let notification = document.getElementById('notification')
+
+let notificationCounter = 0
 
 Chatinput.addEventListener('keypress', (message) => {
     if (message.key === "Enter") {
@@ -74,7 +78,11 @@ socket.on('SendMessageToClient', (data) => {
     let span = document.createElement('span');
     let time = new Date().toLocaleTimeString();
 
-    console.log(data);
+    localStorage.setItem('notificationCounter', notificationCounter)
+    notificationCounter = localStorage.getItem('notificationCounter');
+    notificationCounter++
+    notification.innerHTML = notificationCounter;
+
     Showmessage.append(div);
     div.appendChild(p)
     div.appendChild(span)

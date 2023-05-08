@@ -33,9 +33,13 @@
             <input placeholder="Enter Your Message" id="Chatinput" type="text" />
             <i class="send far fa-paper-plane"></i>
         </div>
+    </div>
+
+    <div id="chat-button" class="chat-button">
+        <span></span>
+        <span id="notification">0</span>
 
     </div>
-    <div id="chat-button" class="chat-button"><span></span></div>
     <div class="modal" id="modal">
         <div class="modal-content">
             <span id="modal-close-button" class="modal-close-button">&times;</span>
